@@ -1,25 +1,30 @@
 :root{
-    --left-offset: 0%;
+    --sides-offset: 17%;
     --defualt-gray: hsl(198, 21%, 84%);
     --darker-gray: hsl(198, 21%, 74%);
     --default-white: #f5f5f5;
     --content-gap: 30px;
 }
 
-body {
+.container {
     font-family: tahoma, sans-serif;
     margin: 0;
     background-color: var(--defualt-gray);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    display: grid;
+    grid-template-areas: "header" "primary-col" "side-col" "footer";
+}
+
+/* Applies the column padding to all elements in the body */
+.container > * {
+    padding: 1rem;
 }
 .header {
+    grid-area:header;
     padding: 30px;
     background-color: var(--default-white);
     display: flex;
     justify-content: first;
-    padding-left: var(--left-offset);
+    padding-left: calc(var(--sides-offset) - 7%);
     align-items: center;
 
     .personal-info {
@@ -43,35 +48,49 @@ body {
 
 }
 
-.content {
-    flex: 1;                        /*Used for taking up the whole page, and keeping the header/footer at the top/bottom */
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    column-gap: var(--content-gap); /*Spacing between the columns */
-    padding-left: var(--left-offset);
 
-    .primary-col {
-        background-color: var(--defualt-gray);
-        border: 1px solid black;
-
-        .about-me, .projects, .experience {
-            background-color: var(--default-white);
-        }
-    }
-
-    .side-col {
-        background-color: var(--default-gray);
-        border: 1px solid black;
-
-        .education, .languages {
-            background-color: var(--default-white);
-        }
-    };
+.primary-col, .side-col {
+    min-height: 70vh;
+    background-color: var(--default-gray);
+}
+.primary-col {
+    grid-area: primary-col;
 
 }
+.side-col {
+    grid-area: side-col;
+}
+
+
+
+.content-box {
+    background-color: var(--default-white);
+    padding: 10px;
+}
+
+.middle-element {
+    margin-top: var(--content-gap);
+    margin-bottom: var(--content-gap);
+}
+
+
+
 
 .footer {
+    grid-area: footer;
     background-color: var(--default-white);
     padding: 30px;
+}
+
+
+
+/* Grid areas for the whole body */
+@media (min-width:768px) {
+    .container {
+        grid-template-columns:10% auto auto auto 10%;
+        grid-template-areas:
+            "header header header header header"
+            ". primary-col primary-col side-col ."
+            "footer footer footer footer footer";
+    }
 }
