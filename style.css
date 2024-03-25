@@ -1,6 +1,6 @@
 :root{
     --sides-offset: 17%;
-    --defualt-gray: hsl(198, 21%, 84%);
+    --default-gray: hsl(198, 21%, 84%);
     --darker-gray: hsl(198, 21%, 74%);
     --default-white: #f5f5f5;
     --content-gap: 30px;
@@ -10,7 +10,7 @@
 .container {
     font-family: tahoma, sans-serif;
     margin: 0;
-    background-color: var(--defualt-gray);
+    background-color: var(--default-gray);
     display: grid;
     grid-template-areas: "header" "primary-col" "side-col" "footer";
 }
@@ -106,6 +106,34 @@
 }
 .side-col {
     grid-area: side-col;
+
+    .skill-item {
+        /* make a grid with 2 items on top and 1 on the bottom */
+        display: grid;
+        grid-template-rows: 0.1fr 0.1fr;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+
+        .skill-level {
+            /* algin the text in the middle */
+            display: flex;
+            justify-content: right;
+            align-items: center;
+        }
+
+        .skill-bar {
+            background-color: red;
+            height: 100%;
+        }
+        .level-bar {
+            background-color: var(--default-gray);
+            width: 100%;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            height: 15px;
+        }
+    
+    }
 }
 
 
