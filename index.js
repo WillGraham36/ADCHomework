@@ -11,7 +11,7 @@ const skills = {
     'C': 20,
 };
 // sort skills
-const sortedSkills = Object.keys(skills).sort((a, b) => skills[b] - skills[a]);
+var sortedSkills = Object.keys(skills).sort((a, b) => skills[b] - skills[a]);
 
 // create list of skills
 sortedSkills.forEach(skill => {
@@ -75,7 +75,7 @@ function animateSkillbars() {
                 currentWidth[i] += step;
                 i++;
             });
-        }, 5 * frame); //10ms 
+        }, 5 * frame); //in ms 
     }
 
 }
